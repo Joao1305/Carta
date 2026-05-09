@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cartinhas 💌</title>
+
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #ffeef5);
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.caixa{
+    background: rgba(255,255,255,0.95);
+    width: 380px;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(255,105,180,0.3);
+    animation: aparecer 0.8s ease;
+}
+
+@keyframes aparecer{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1{
+    color: #ff4f93;
+    margin-bottom: 15px;
+    font-size: 32px;
+}
+
+p{
+    color: #555;
+    margin-bottom: 15px;
+}
+
+input{
+    padding: 12px;
+    width: 85%;
+    border: 2px solid #ffc1d6;
+    border-radius: 15px;
+    outline: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input:focus{
+    border-color: #ff69b4;
+    box-shadow: 0 0 10px rgba(255,105,180,0.3);
+}
+
+button{
+    padding: 12px 22px;
+    margin-top: 15px;
+    border: none;
+    background: linear-gradient(135deg, #ff69b4, #ff4f93);
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(255,105,180,0.3);
+}
+
+button:hover{
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #ff4f93, #ff1493);
+}
+
+#opcoes{
+    display: none;
+    margin-top: 25px;
+}
+
+#opcoes button{
+    margin: 10px;
+}
+
+#mensagem{
+    margin-top: 25px;
+    font-size: 17px;
+    color: #444;
+    line-height: 1.7;
+    background: #fff5fa;
+    padding: 15px;
+    border-radius: 15px;
+    animation: fade 0.5s ease;
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+
+.emoji{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="caixa">
+
+<div class="emoji">💌🌸</div>
+
+<h1>Olá 💖</h1>
+
+<p>Digite sua data de nascimento:</p>
+
+<input type="text" id="data" placeholder="Ex: 13/05">
+
+<br>
+
+<button onclick="verificar()">Entrar ✨</button>
+
+<div id="opcoes">
+
+<h3 style="margin-top:20px; color:#ff4f93;">
+Escolha uma opção 💕
+</h3>
+
+<button onclick="mostrarMensagem(1)">
+🌷 Dia das Mães
+</button>
+
+<button onclick="mostrarMensagem(2)">
+🎂 Seu aniversário
+</button>
+
+</div>
+
+<div id="mensagem"></div>
+
+</div>
+
+<script>
+
+function verificar(){
+
+    let data = document.getElementById("data").value;
+
+    if(data == "1612" || data == "16/12"){
+
+        document.getElementById("opcoes").style.display = "block";
+
+        document.getElementById("mensagem").innerHTML = "Acesso liberado 💖";
+
+    }else{
+
+        document.getElementById("mensagem").innerHTML =
+        "❌ Data inválida";
+
+        document.getElementById("opcoes").style.display = "none";
+    } if (data == ("2303") || data ==("23/03")){
+      document.getElementById("mensagem").innerHTML="oi";
+    }
+}
+
+function mostrarMensagem(opcao){
+
+    if(opcao == 1){
+
+        document.getElementById("mensagem").innerHTML =
+
+        "🌷 <b>Feliz Dia das Mães!</b><br><br>" +
+
+        "Eu quero que você saiba que eu te amo muito. " +
+
+        "Eu sei que não sou o melhor filho do mundo, " +
+
+        "mas eu prometo que um dia vou te dar tudo o que você merece… " +
+
+        "ou melhor, quase tudo, porque o que você merece é o mundo 💖<br><br>" +
+
+        "Tem muitas coisas que eu queria falar, mas eu sou ruim com as palavras. " +
+
+        "Então eu só quero agradecer por tudo o que a mãe fez por mim e pelas minhas irmãs. " +
+
+        "Somente Deus sabe como foi a sua trajetória até aqui ✨<br><br>" +
+
+        "E eu espero que você não fique brava por eu não dar presente 😅 " +
+
+        "É que eu tô juntando dinheiro pra tatuagem kkk.";
+
+    }
+
+    else if(opcao == 2){
+
+        document.getElementById("mensagem").innerHTML =
+
+        "🎂 Ainda não é o seu aniversário kkk 💕";
+
+    }
+}
+
+</script>
+
+</body>
+</html>
