@@ -166,35 +166,54 @@ Escolha uma opção 💕
 
 <script>
 
+    let usuario = "";
+    
 function verificar(){
 
-    let data = document.getElementById("data").value;
+    let data = document.getElementById("data").value.trim();
 
     if(data == "1612" || data == "16/12"){
 
+        usuario = "mae";
+
         document.getElementById("opcoes").style.display = "block";
 
-        document.getElementById("mensagem").innerHTML = "Acesso liberado 💖";
+        document.getElementById("mensagem").innerHTML =
+        "Acesso liberado 💖";
 
-    }else{
+    }
+else if(data =="1208" || data == "12/08"){
+    
+    usuario = "tatinha";
+    
+    document.getElementById("opcoes").style.display = "block";
+
+        document.getElementById("mensagem").innerHTML =
+        "Acesso liberado 💖";
+}
+    
+    else if(data == "2303" || data == "23/03"){
+
+        usuario = "tatao";
+
+        document.getElementById("opcoes").style.display = "block";
+
+        document.getElementById("mensagem").innerHTML =
+        "Acesso liberado 💖";
+    }
+
+    else{
 
         document.getElementById("mensagem").innerHTML =
         "❌ Data inválida";
 
         document.getElementById("opcoes").style.display = "none";
-    } 
-
-if (data == ("2303") || data ==("23/03")){
-   
-    document.getElementById("opcoes").style.display = "block";
-
-        document.getElementById("mensagem").innerHTML = "Acesso liberado 💖";
+    }
 }
-       }
     function mostrarMensagem(opcao){
 
             if(opcao == 1){
-
+if(usuario == "tatao"){
                 document.getElementById("mensagem").innerHTML =
                     
                     "Feliz Dia das Mães, Tatao 🤍<br><br>" +
@@ -204,23 +223,10 @@ if (data == ("2303") || data ==("23/03")){
 "Nunca desanime por causa dos outros. Como a nossa mãe disse: “Você brilha muito, e isso incomoda os outros.” Continue lutando e sendo essa pessoa forte que você é.<br><br>" +
 
 "Te amo, Tatao 🤍🤍";
-                 }else if(opcao == 2){
-
-document.getElementById("mensagem").innerHTML =
-                
-                "Eu gostaria de falar “feliz aniversário atrasado” kkk. Como eu não dei presente, gostaria que você aceitasse esse texto.<br><br>" +
-
-"Não tenho muito o que falar, porque eu sempre digo que você é incrível, mas dessa vez eu gostaria de lembrar que você não está sozinha. Você é forte, mas não precisa carregar todo o fardo sozinha. E se você fraquejar ou cair, não se preocupe, isso não é motivo para se humilhar, mas sim para perceber que sozinha é difícil. Por isso você tem sua família e Deus.<br><br>" +
-
-"Nunca fique pensando que você não pode. Te amo, Tata ❤️"; 
-            }
 }
-
-function mostrarMensagem(opcao){
-
-    if(opcao == 1){
-
-        document.getElementById("mensagem").innerHTML =
+          else if(usuario == "mae"){      
+           
+                     document.getElementById("mensagem").innerHTML =
 
         "🌷 Feliz Dia das Mães!<br><br>" +
 
@@ -253,15 +259,42 @@ function mostrarMensagem(opcao){
             "Você é meu porto seguro, minha força e uma das pessoas que eu mais admiro na vida. Sou muito grata por tudo o que você faz por mim, pelos sacrifícios que muitas vezes eu nem vejo e pelo amor imenso que você me dá todos os dias. <br><br>" +
 
             "Espero um dia conseguir retribuir pelo menos um pedacinho de tudo o que você merece. Eu te amo mais do que consigo explicar. Obrigada por ser minha mãe, minha proteção e meu lar 💖 ";
+          }
+         else if(usuario == "tatinha"){
+             document.getElementById("mensagem").innerHTML =
+             "Eu sei que você não é mãe, mas você é mãe de pet kkk, e também cuidou de mim como uma mãe quando eu era pequeno.<br><br>" +
 
-    }
+"Queria te agradecer por muitas coisas. Você me ensinou muita coisa e também proporcionou muitos momentos incríveis pra mim. Você lembra do piquenique no telhado? Kkkk.<br><br>" +
 
-    else if(opcao == 2){
+"A maioria das coisas que eu gosto foi você que me apresentou, como músicas. Por sua causa eu tenho bom gosto kkk.<br><br>" +
+
+"E por isso eu queria agradecer por tudo o que você fez por mim e por ainda me ajudar em muitas coisas até hoje. Por conta disso, eu tenho certeza de que você vai ser uma ótima mãe.<br><br>" +
+
+"Te amo, Tata 🤍🤍<br><br>" +
+             "E Feliz Dia das Mães";
+         }
+            }
+       else if(opcao == 2){
+if(usuario == "tatao"){
+document.getElementById("mensagem").innerHTML =
+                
+                "Eu gostaria de falar “feliz aniversário atrasado” kkk. Como eu não dei presente, gostaria que você aceitasse esse texto.<br><br>" +
+
+"Não tenho muito o que falar, porque eu sempre digo que você é incrível, mas dessa vez eu gostaria de lembrar que você não está sozinha. Você é forte, mas não precisa carregar todo o fardo sozinha. E se você fraquejar ou cair, não se preocupe, isso não é motivo para se humilhar, mas sim para perceber que sozinha é difícil. Por isso você tem sua família e Deus.<br><br>" +
+
+"Nunca fique pensando que você não pode. Te amo, Tata ❤️"; 
+}
+    else if(usuario == "mae"){
 
         document.getElementById("mensagem").innerHTML =
 
         "🎂 Ainda não é o seu aniversário kkk 💕";
-
+    
+}
+           else if(usuario == "tatinha"){
+               document.getElementById("mensagem").innerHTML =
+               "Está com pressa para ficar velho kkk."
+           }
     }
 }
 
