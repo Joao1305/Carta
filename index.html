@@ -186,13 +186,31 @@ function verificar(){
 
 if (data == ("2303") || data ==("23/03")){
    
-    
-   document.getElementById("mensagem").innerHTML = "Acesso liberado 💖";
+    document.getElementById("opcoes").style.display = "block";
+
+        document.getElementById("mensagem").innerHTML = "Acesso liberado 💖";
 }
-        
-    
-    
-    
+        function mostrarMensagem(opcao){
+
+            if(opcao == 1){
+
+                document.getElementById("mensagem").innerHTML =
+                    
+                    "Feliz Dia das Mães, Tatao 🤍<br><br>" +
+
+"Eu não sou seu filho, mas dá para ver o quanto você é esforçada como mãe e o quanto ama o Luis. Que ele cresça sabendo como você é uma mãe incrível.<br><br>" +
+
+"Nunca desanime por causa dos outros. Como a nossa mãe disse: “Você brilha muito, e isso incomoda os outros.” Continue lutando e sendo essa pessoa forte que você é.<br><br>" +
+
+"Te amo, Tatao 🤍🤍";
+                 }else if(opcao == 2){
+
+                "Eu gostaria de falar “feliz aniversário atrasado” kkk. Como eu não dei presente, gostaria que você aceitasse esse texto.<br><br>" +
+
+"Não tenho muito o que falar, porque eu sempre digo que você é incrível, mas dessa vez eu gostaria de lembrar que você não está sozinha. Você é forte, mas não precisa carregar todo o fardo sozinha. E se você fraquejar ou cair, não se preocupe, isso não é motivo para se humilhar, mas sim para perceber que sozinha é difícil. Por isso você tem sua família e Deus.<br><br>" +
+
+"Nunca fique pensando que você não pode. Te amo, Tata ❤️"; 
+            }
 }
 
 function mostrarMensagem(opcao){
