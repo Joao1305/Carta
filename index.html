@@ -171,8 +171,17 @@ Escolha uma opção 💕
 function verificar(){
 
     let data = document.getElementById("data").value.trim();
+if (data == "1203" || data == "12/03"){
 
-    if(data == "1612" || data == "16/12"){
+usuario = "tia";
+
+document.getElementById("opcoes").style.display = "block";
+
+        document.getElementById("mensagem").innerHTML =
+        "Acesso liberado 💖";
+}
+   
+else if(data == "1612" || data == "16/12"){
 
         usuario = "mae";
 
@@ -213,7 +222,14 @@ else if(data =="1208" || data == "12/08"){
     function mostrarMensagem(opcao){
 
             if(opcao == 1){
-if(usuario == "tatao"){
+
+if(usuario == "tia"){
+
+document.getElementById("mensagem").innerHTML =
+"Feliz Dia das Mães, tia. Eu queria agradecer por tudo o que você fez por mim. Quando a minha mãe trabalhava à noite, quem cuidava de mim era você. Então, você é como uma segunda mãe para mim. Muito obrigado por tudo, tia. Eu te amo muito ❤️";
+}
+
+else if(usuario == "tatao"){
                 document.getElementById("mensagem").innerHTML =
                     
                     "Feliz Dia das Mães, Tatao 🤍<br><br>" +
@@ -275,7 +291,16 @@ if(usuario == "tatao"){
          }
             }
        else if(opcao == 2){
-if(usuario == "tatao"){
+
+if(usuario == "tia"){
+document.getElementById("mensagem").innerHTML =
+"Feliz aniversário atrasado, tia. Como eu não te dei um presente, gostaria que você aceitasse este texto.<br><br>" +
+
+"Eu não tenho muito a falar, mas gostaria que você soubesse que você é muito especial para mim. E quero que saiba que nós somos sua família e sempre vamos estar aqui quando você precisar ❤️<br><br>";
+
+}
+
+else if(usuario == "tatao"){
 document.getElementById("mensagem").innerHTML =
                 
                 "Eu gostaria de falar “feliz aniversário atrasado” kkk. Como eu não dei presente, gostaria que você aceitasse esse texto.<br><br>" +
