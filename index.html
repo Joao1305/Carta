@@ -28,6 +28,7 @@ body{
 .caixa{
     background: rgba(255,255,255,0.95);
     width: 380px;
+    max-width: 100%;
     padding: 30px;
     border-radius: 25px;
     box-shadow: 0 10px 30px rgba(255,105,180,0.3);
@@ -125,6 +126,18 @@ button:hover{
     margin-bottom: 10px;
 }
 
+/* VÍDEO DA TATINHA */
+
+#videoTatinha{
+    display: none;
+    width: 100%;
+    max-width: 320px;
+    margin: 20px auto 0;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(255,105,180,0.25);
+    background: #000;
+}
+
 </style>
 </head>
 
@@ -132,56 +145,90 @@ button:hover{
 
 <div class="caixa">
 
-<div class="emoji">💌🌸</div>
+    <div class="emoji">💌🌸</div>
 
-<h1>Olá 💖</h1>
+    <h1>Olá 💖</h1>
 
-<p>Digite sua data de nascimento:</p>
+    <p>Digite sua data de nascimento:</p>
 
-<input type="text" id="data" placeholder="Ex: 13/05">
+    <input 
+        type="text" 
+        id="data" 
+        placeholder="Ex: 13/05"
+    >
 
-<br>
+    <br>
 
-<button onclick="verificar()">Entrar ✨</button>
+    <button onclick="verificar()">
+        Entrar ✨
+    </button>
 
-<div id="opcoes">
+    <div id="opcoes">
 
-<h3 style="margin-top:20px; color:#ff4f93;">
-Escolha uma opção 💕
-</h3>
+        <h3 style="margin-top:20px; color:#ff4f93;">
+            Escolha uma opção 💕
+        </h3>
 
-<button onclick="mostrarMensagem(1)">
-🌷 Dia das Mães
-</button>
+        <button onclick="mostrarMensagem(1)">
+            🌷 Dia das Mães
+        </button>
 
-<button onclick="mostrarMensagem(2)">
-🎂 Seu aniversário
-</button>
+        <button onclick="mostrarMensagem(2)">
+            🎂 Seu aniversário
+        </button>
 
-</div>
+    </div>
 
-<div id="mensagem"></div>
+    <div id="mensagem"></div>
+
+    <!-- VÍDEO DA TATINHA -->
+    <video 
+        id="videoTatinha" 
+        controls 
+        playsinline
+        preload="metadata"
+    >
+        <source src="videos/tatinha.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo.
+    </video>
 
 </div>
 
 <script>
 
-    let usuario = "";
-    
+let usuario = "";
+
+function esconderVideo(){
+
+    let video = document.getElementById("videoTatinha");
+
+    video.style.display = "none";
+
+    video.pause();
+    video.currentTime = 0;
+}
+
+
 function verificar(){
 
     let data = document.getElementById("data").value.trim();
-if (data == "1203" || data == "12/03"){
 
-usuario = "tia";
+    // Esconde o vídeo sempre que fizer um novo login
+    esconderVideo();
 
-document.getElementById("opcoes").style.display = "block";
+
+    if(data == "1203" || data == "12/03"){
+
+        usuario = "tia";
+
+        document.getElementById("opcoes").style.display = "block";
 
         document.getElementById("mensagem").innerHTML =
         "Acesso liberado 💖";
-}
-   
-else if(data == "1612" || data == "16/12"){
+
+    }
+
+    else if(data == "1612" || data == "16/12"){
 
         usuario = "mae";
 
@@ -191,16 +238,18 @@ else if(data == "1612" || data == "16/12"){
         "Acesso liberado 💖";
 
     }
-else if(data =="1208" || data == "12/08"){
-    
-    usuario = "tatinha";
-    
-    document.getElementById("opcoes").style.display = "block";
+
+    else if(data == "1208" || data == "12/08"){
+
+        usuario = "tatinha";
+
+        document.getElementById("opcoes").style.display = "block";
 
         document.getElementById("mensagem").innerHTML =
         "Acesso liberado 💖";
-}
-    
+
+    }
+
     else if(data == "2303" || data == "23/03"){
 
         usuario = "tatao";
@@ -209,123 +258,181 @@ else if(data =="1208" || data == "12/08"){
 
         document.getElementById("mensagem").innerHTML =
         "Acesso liberado 💖";
+
     }
 
     else{
+
+        usuario = "";
 
         document.getElementById("mensagem").innerHTML =
         "❌ Data inválida";
 
         document.getElementById("opcoes").style.display = "none";
+
     }
 }
-    function mostrarMensagem(opcao){
 
-            if(opcao == 1){
 
-if(usuario == "tia"){
+function mostrarMensagem(opcao){
 
-document.getElementById("mensagem").innerHTML =
-"Feliz Dia das Mães, tia. Eu queria agradecer por tudo o que você fez por mim. Quando a minha mãe trabalhava à noite, quem cuidava de mim era você. Então, você é como uma segunda mãe para mim. Muito obrigado por tudo, tia. Eu te amo muito ❤️";
-}
+    // Esconde o vídeo quando troca de mensagem
+    esconderVideo();
 
-else if(usuario == "tatao"){
-                document.getElementById("mensagem").innerHTML =
-                    
-                    "Feliz Dia das Mães, Tatao 🤍<br><br>" +
 
-"Eu não sou seu filho, mas dá para ver o quanto você é esforçada como mãe e o quanto ama o Luis. Que ele cresça sabendo como você é uma mãe incrível.<br><br>" +
+    /* =========================
+       DIA DAS MÃES
+    ========================= */
 
-"Nunca desanime por causa dos outros. Como a nossa mãe disse: “Você brilha muito, e isso incomoda os outros.” Continue lutando e sendo essa pessoa forte que você é.<br><br>" +
+    if(opcao == 1){
 
-"Te amo, Tatao 🤍🤍";
-}
-          else if(usuario == "mae"){      
-           
-                     document.getElementById("mensagem").innerHTML =
+        if(usuario == "tia"){
 
-        "🌷 Feliz Dia das Mães!<br><br>" +
+            document.getElementById("mensagem").innerHTML =
 
-        "Do: Caçula <br><br>"+
+            "Feliz Dia das Mães, tia. Eu queria agradecer por tudo o que você fez por mim. Quando a minha mãe trabalhava à noite, quem cuidava de mim era você. Então, você é como uma segunda mãe para mim. Muito obrigado por tudo, tia. Eu te amo muito ❤️";
+
+        }
+
+
+        else if(usuario == "tatao"){
+
+            document.getElementById("mensagem").innerHTML =
+
+            "Feliz Dia das Mães, Tatao 🤍<br><br>" +
+
+            "Eu não sou seu filho, mas dá para ver o quanto você é esforçada como mãe e o quanto ama o Luis. Que ele cresça sabendo como você é uma mãe incrível.<br><br>" +
+
+            "Nunca desanime por causa dos outros. Como a nossa mãe disse: “Você brilha muito, e isso incomoda os outros.” Continue lutando e sendo essa pessoa forte que você é.<br><br>" +
+
+            "Te amo, Tatao 🤍🤍";
+
+        }
+
+
+        else if(usuario == "mae"){
+
+            document.getElementById("mensagem").innerHTML =
+
+            "🌷 Feliz Dia das Mães!<br><br>" +
+
+            "Do: Caçula <br><br>"+
+
+            "Eu quero que você saiba que eu te amo muito. " +
+
+            "Eu sei que não sou o melhor filho do mundo, " +
+
+            "mas eu prometo que um dia vou te dar tudo o que você merece… " +
+
+            "ou melhor, quase tudo, porque o que você merece é o mundo 💖<br><br>" +
+
+            "Tem muitas coisas que eu queria falar, mas eu sou ruim com as palavras. " +
+
+            "Então eu só quero agradecer por tudo o que a mãe fez por mim e pelas minhas irmãs. " +
+
+            "Somente Deus sabe como foi a sua trajetória até aqui ✨<br><br>" +
+
+            "E eu espero que você não fique brava por eu não dar presente 😅 " +
+
+            "É que eu tô juntando dinheiro pra tatuagem kkk. <br><br>" +
+
+            "De: Franzinha sua filha do meio!<br><br> " +
+
+            "Mãe, feliz Dia das Mães ❤️<br><br>" +
+
+            "Eu nunca vou conseguir colocar em palavras tudo o que você representa pra mim, porque seu amor aparece em cada cuidado, cada conselho, cada abraço e em todas as vezes que você esteve ao meu lado mesmo quando ninguém mais estava.<br><br>" +
+
+            "Você é meu porto seguro, minha força e uma das pessoas que eu mais admiro na vida. Sou muito grata por tudo o que você faz por mim, pelos sacrifícios que muitas vezes eu nem vejo e pelo amor imenso que você me dá todos os dias.<br><br>" +
+
+            "Espero um dia conseguir retribuir pelo menos um pedacinho de tudo o que você merece. Eu te amo mais do que consigo explicar. Obrigada por ser minha mãe, minha proteção e meu lar 💖<br><br>" +
+
+            "Da: irma mais velha<br><br>" +
+
+            "Mãe, sua força, coragem e determinação sempre serão minha maior inspiração. Você é uma mulher guerreira, que enfrenta cada desafio com fé e amor no coração. Sou grata por ter você como exemplo de vida. Feliz Dia das Mães para a mulher mais forte e especial que eu conheço! ❤️🌷";
+
+        }
+
+
+        else if(usuario == "tatinha"){
+
+            document.getElementById("mensagem").innerHTML =
+
+            "Eu sei que você não é mãe, mas você é mãe de pet kkk, e também cuidou de mim como uma mãe quando eu era pequeno.<br><br>" +
+
+            "Queria te agradecer por muitas coisas. Você me ensinou muita coisa e também proporcionou muitos momentos incríveis pra mim. Você lembra do piquenique no telhado? Kkkk.<br><br>" +
+
+            "A maioria das coisas que eu gosto foi você que me apresentou, como músicas. Por sua causa eu tenho bom gosto kkk.<br><br>" +
+
+            "E por isso eu queria agradecer por tudo o que você fez por mim e por ainda me ajudar em muitas coisas até hoje. Por conta disso, eu tenho certeza de que você vai ser uma ótima mãe.<br><br>" +
+
+            "Te amo, Tata 🤍🤍<br><br>" +
+
+            "E Feliz Dia das Mães 💐";
+
+
+
+        }
+
+    }
+
+
+    /* =========================
+       ANIVERSÁRIO
+    ========================= */
+
+    else if(opcao == 2){
+
+        if(usuario == "tia"){
+
+            document.getElementById("mensagem").innerHTML =
+
+            "Feliz aniversário atrasado, tia. Como eu não te dei um presente, gostaria que você aceitasse esse mini texto kk.<br><br>" +
+
+            "Eu não tenho muito a falar, mas gostaria que você soubesse que você é muito especial para mim. E quero que saiba que nós somos sua família e sempre vamos estar aqui quando você precisar ❤️<br><br>";
+
+        }
+
+
+        else if(usuario == "tatao"){
+
+            document.getElementById("mensagem").innerHTML =
+
+            "Eu gostaria de falar “feliz aniversário atrasado” kkk. Como eu não dei presente, gostaria que você aceitasse esse texto.<br><br>" +
+
+            "Não tenho muito o que falar, porque eu sempre digo que você é incrível, mas dessa vez eu gostaria de lembrar que você não está sozinha. Você é forte, mas não precisa carregar todo o fardo sozinha. E se você fraquejar ou cair, não se preocupe, isso não é motivo para se humilhar, mas sim para perceber que sozinha é difícil. Por isso você tem sua família e Deus.<br><br>" +
+
+            "Nunca fique pensando que você não pode. Te amo, Tata ❤️";
+
+        }
+
+
+        else if(usuario == "mae"){
+
+            document.getElementById("mensagem").innerHTML =
+
+            "🎂 Ainda não é o seu aniversário kkk 💕";
+
+        }
+
+
+        else if(usuario == "tatinha"){
+
+            document.getElementById("mensagem").innerHTML =
+
+            "Adadadaddasdad";
             
-        "Eu quero que você saiba que eu te amo muito. " +
+            
+             // MOSTRA O VÍDEO DA TATINHA
+            let video = document.getElementById("videoTatinha");
 
-        "Eu sei que não sou o melhor filho do mundo, " +
+            video.style.display = "block";
 
-        "mas eu prometo que um dia vou te dar tudo o que você merece… " +
+            video.load();
 
-        "ou melhor, quase tudo, porque o que você merece é o mundo 💖<br><br>" +
+        }
 
-        "Tem muitas coisas que eu queria falar, mas eu sou ruim com as palavras. " +
-
-        "Então eu só quero agradecer por tudo o que a mãe fez por mim e pelas minhas irmãs. " +
-
-        "Somente Deus sabe como foi a sua trajetória até aqui ✨<br><br>" +
-
-        "E eu espero que você não fique brava por eu não dar presente 😅 " +
-
-        "É que eu tô juntando dinheiro pra tatuagem kkk. <br><br>" +
-        
-        "De: Franzinha sua filha do meio!<br><br> " +
-
-            " Mãe, feliz Dia das Mães ❤️<br><br>" +
-
-            "Eu nunca vou conseguir colocar em palavras tudo o que você representa pra mim, porque seu amor aparece em cada cuidado, cada conselho, cada abraço e em todas as vezes que você esteve ao meu lado mesmo quando ninguém mais estava.<br><br> " +
-
-            "Você é meu porto seguro, minha força e uma das pessoas que eu mais admiro na vida. Sou muito grata por tudo o que você faz por mim, pelos sacrifícios que muitas vezes eu nem vejo e pelo amor imenso que você me dá todos os dias. <br><br>" +
-
-            "Espero um dia conseguir retribuir pelo menos um pedacinho de tudo o que você merece. Eu te amo mais do que consigo explicar. Obrigada por ser minha mãe, minha proteção e meu lar 💖<br><br> " +
-
-"Da: irma mais velha<br><br>" +
-
-"Mãe, sua força, coragem e determinação sempre serão minha maior inspiração. Você é uma mulher guerreira, que enfrenta cada desafio com fé e amor no coração. Sou grata por ter você como exemplo de vida. Feliz Dia das Mães para a mulher mais forte e especial que eu conheço! ❤️🌷";
-
-          }
-         else if(usuario == "tatinha"){
-             document.getElementById("mensagem").innerHTML =
-             "Eu sei que você não é mãe, mas você é mãe de pet kkk, e também cuidou de mim como uma mãe quando eu era pequeno.<br><br>" +
-
-"Queria te agradecer por muitas coisas. Você me ensinou muita coisa e também proporcionou muitos momentos incríveis pra mim. Você lembra do piquenique no telhado? Kkkk.<br><br>" +
-
-"A maioria das coisas que eu gosto foi você que me apresentou, como músicas. Por sua causa eu tenho bom gosto kkk.<br><br>" +
-
-"E por isso eu queria agradecer por tudo o que você fez por mim e por ainda me ajudar em muitas coisas até hoje. Por conta disso, eu tenho certeza de que você vai ser uma ótima mãe.<br><br>" +
-
-"Te amo, Tata 🤍🤍<br><br>" +
-             "E Feliz Dia das Mães";
-         }
-            }
-       else if(opcao == 2){
-
-if(usuario == "tia"){
-document.getElementById("mensagem").innerHTML =
-"Feliz aniversário atrasado, tia. Como eu não te dei um presente, gostaria que você aceitasse esse mini texto kk.<br><br>" +
-
-"Eu não tenho muito a falar, mas gostaria que você soubesse que você é muito especial para mim. E quero que saiba que nós somos sua família e sempre vamos estar aqui quando você precisar ❤️<br><br>";
-
-}
-
-else if(usuario == "tatao"){
-document.getElementById("mensagem").innerHTML =
-                
-                "Eu gostaria de falar “feliz aniversário atrasado” kkk. Como eu não dei presente, gostaria que você aceitasse esse texto.<br><br>" +
-
-"Não tenho muito o que falar, porque eu sempre digo que você é incrível, mas dessa vez eu gostaria de lembrar que você não está sozinha. Você é forte, mas não precisa carregar todo o fardo sozinha. E se você fraquejar ou cair, não se preocupe, isso não é motivo para se humilhar, mas sim para perceber que sozinha é difícil. Por isso você tem sua família e Deus.<br><br>" +
-
-"Nunca fique pensando que você não pode. Te amo, Tata ❤️"; 
-}
-    else if(usuario == "mae"){
-
-        document.getElementById("mensagem").innerHTML =
-
-        "🎂 Ainda não é o seu aniversário kkk 💕";
-    
-}
-           else if(usuario == "tatinha"){
-               document.getElementById("mensagem").innerHTML =
-               "Adadadaddasdad"
-           }
     }
+
 }
 
 </script>
